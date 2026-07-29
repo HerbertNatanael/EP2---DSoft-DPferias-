@@ -71,3 +71,10 @@ def valida_questoes(questoes):
         retorno.append(valida_questao(questao))
 
     return retorno
+
+import random
+
+def sorteia_questao(questoes, nivel):
+    lista = questoes[nivel]
+    indice = random.randint(0, len(lista) - 1)
+    return lista[indice]
