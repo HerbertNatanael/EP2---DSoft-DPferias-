@@ -125,3 +125,61 @@ def gera_ajuda(questao):
             dica += " | "
 
     return dica
+
+
+questoes = [
+    {
+        "titulo": "Quanto é 2 + 2?",
+        "nivel": "facil",
+        "opcoes": {
+            "A": "3",
+            "B": "4",
+            "C": "5",
+            "D": "6"
+        },
+        "correta": "B"
+    },
+    {
+        "titulo": "Capital do Brasil?",
+        "nivel": "facil",
+        "opcoes": {
+            "A": "Brasília",
+            "B": "Rio de Janeiro",
+            "C": "São Paulo",
+            "D": "Salvador"
+        },
+        "correta": "A"
+    },
+    {
+        "titulo": "Quanto é 10 × 10?",
+        "nivel": "medio",
+        "opcoes": {
+            "A": "10",
+            "B": "20",
+            "C": "100",
+            "D": "1000"
+        },
+        "correta": "C"
+    }
+]
+
+print("=== BASE ORIGINAL ===")
+print(questoes)
+
+print("\n=== TRANSFORMA BASE ===")
+base = transforma_base(questoes)
+print(base)
+
+print("\n=== VALIDAÇÃO ===")
+print(valida_questoes(questoes))
+
+print("\n=== SORTEIO ===")
+sorteadas = []
+
+q = sorteia_questao_inedita(base, "facil", sorteadas)
+
+print(questao_para_texto(q, 1))
+
+print()
+
+print(gera_ajuda(q))
