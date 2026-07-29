@@ -1,3 +1,6 @@
+import random
+
+
 def transforma_base(questoes):
     base = {}
 
@@ -10,6 +13,7 @@ def transforma_base(questoes):
         base[nivel].append(questao)
 
     return base
+
 
 def valida_questao(questao):
     retorno = {}
@@ -43,26 +47,26 @@ def valida_questao(questao):
         if len(opcoes) != 4:
             retorno["opcoes"] = "tamanho_invalido"
         else:
-            chaves_validas = ["A", "B", "C", "D"]
+            chaves_validas = {"A", "B", "C", "D"}
 
-            if list(opcoes.keys()) != chaves_validas:
+            if set(opcoes.keys()) != chaves_validas:
                 retorno["opcoes"] = "chave_invalida_ou_nao_encontrada"
             else:
                 vazias = {}
 
-                for chave in chaves_validas:
+                for chave in ["A", "B", "C", "D"]:
                     if isinstance(opcoes[chave], str) and opcoes[chave].strip() == "":
                         vazias[chave] = "vazia"
 
                 if vazias != {}:
                     retorno["opcoes"] = vazias
 
-
     if "correta" in questao:
         if questao["correta"] not in ["A", "B", "C", "D"]:
             retorno["correta"] = "valor_errado"
 
     return retorno
+
 
 def valida_questoes(questoes):
     retorno = []
@@ -72,15 +76,6 @@ def valida_questoes(questoes):
 
     return retorno
 
-import random
-
-def sorteia_questao(questoes, nivel):
-    lista = questoes[nivel]
-    indice = random.randint(0, len(lista) - 1)
-    return lista[indice]
-
-import random
-
 
 def sorteia_questao(questoes, nivel):
     lista = questoes[nivel]
@@ -89,13 +84,13 @@ def sorteia_questao(questoes, nivel):
 
 
 def sorteia_questao_inedita(questoes, nivel, questoes_sorteadas):
-
     while True:
         questao = sorteia_questao(questoes, nivel)
 
         if questao not in questoes_sorteadas:
             questoes_sorteadas.append(questao)
             return questao
+
 
 def questao_para_texto(questao, id):
     texto = "----------------------------------------\n"
@@ -109,10 +104,8 @@ def questao_para_texto(questao, id):
 
     return texto
 
-import random
 
 def gera_ajuda(questao):
-
     erradas = []
 
     for letra in ["A", "B", "C", "D"]:
