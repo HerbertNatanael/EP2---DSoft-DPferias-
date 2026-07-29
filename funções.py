@@ -78,3 +78,21 @@ def sorteia_questao(questoes, nivel):
     lista = questoes[nivel]
     indice = random.randint(0, len(lista) - 1)
     return lista[indice]
+
+import random
+
+
+def sorteia_questao(questoes, nivel):
+    lista = questoes[nivel]
+    indice = random.randint(0, len(lista) - 1)
+    return lista[indice]
+
+
+def sorteia_questao_inedita(questoes, nivel, questoes_sorteadas):
+
+    while True:
+        questao = sorteia_questao(questoes, nivel)
+
+        if questao not in questoes_sorteadas:
+            questoes_sorteadas.append(questao)
+            return questao
