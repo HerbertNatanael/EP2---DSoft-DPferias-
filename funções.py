@@ -96,3 +96,15 @@ def sorteia_questao_inedita(questoes, nivel, questoes_sorteadas):
         if questao not in questoes_sorteadas:
             questoes_sorteadas.append(questao)
             return questao
+
+def questao_para_texto(questao, id):
+    texto = "----------------------------------------\n"
+    texto += "QUESTAO " + str(id) + "\n\n"
+    texto += questao["titulo"] + "\n\n"
+    texto += "RESPOSTAS:\n"
+    texto += "A: " + questao["opcoes"]["A"] + "\n"
+    texto += "B: " + questao["opcoes"]["B"] + "\n"
+    texto += "C: " + questao["opcoes"]["C"] + "\n"
+    texto += "D: " + questao["opcoes"]["D"]
+
+    return texto
